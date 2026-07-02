@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Weather Map</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+}
+
+header{
+background:linear-gradient(135deg,#2193b0,#6dd5ed);
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.map-container{
+width:100%;
+height:90vh;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:0;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>🌍 Weather Map - {{ place }}</h1>
+</header>
+
+<div class="map-container">
+
+<!-- YOUR REAL WEATHER MAP GOES HERE -->
+<iframe src="{{ map_url }}"></iframe>
+
+</div>
+
+</body>
+</html>

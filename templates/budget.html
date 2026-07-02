@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Budget Planner</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#eef3f8;
+color:#333;
+}
+
+/* Hero */
+
+.hero{
+height:350px;
+background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:22px;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+/* Summary */
+
+.summary{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+margin-top:-60px;
+margin-bottom:40px;
+position:relative;
+z-index:5;
+}
+
+.card{
+
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+text-align:center;
+transition:.3s;
+
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:45px;
+color:#198754;
+margin-bottom:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+font-size:28px;
+font-weight:bold;
+color:#198754;
+}
+
+/* Budget Distribution */
+
+.section{
+
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+margin-bottom:40px;
+
+}
+
+.section h2{
+
+margin-bottom:30px;
+color:#198754;
+
+}
+
+.item{
+
+margin-bottom:30px;
+
+}
+
+.label{
+
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+margin-bottom:8px;
+
+}
+
+.progress{
+
+height:22px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
+
+}
+
+.fill{
+
+height:100%;
+border-radius:30px;
+
+}
+
+.hotel{
+background:#0d6efd;
+width:40%;
+}
+
+.food{
+background:#ffc107;
+width:30%;
+}
+
+.transport{
+background:#20c997;
+width:20%;
+}
+
+.activity{
+background:#dc3545;
+width:10%;
+}
+
+/* Statistics */
+
+.stats{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+
+}
+
+.stat{
+
+background:#f8f9fa;
+padding:25px;
+border-radius:15px;
+text-align:center;
+
+}
+
+.stat h3{
+
+color:#198754;
+margin-bottom:10px;
+
+}
+
+.stat p{
+
+font-size:30px;
+font-weight:bold;
+
+}/* Tips */
+
+.tips{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+
+}
+
+.tip{
+
+display:flex;
+gap:20px;
+padding:20px;
+background:#f8f9fa;
+border-radius:15px;
+transition:.3s;
+
+}
+
+.tip:hover{
+
+transform:translateY(-5px);
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+}
+
+.tip i{
+
+font-size:35px;
+color:#20c997;
+
+}
+
+.tip h3{
+
+margin-bottom:8px;
+
+}
+
+
+/* Chart */
+
+.chart{
+
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+gap:20px;
+
+}
+
+.circle{
+
+width:130px;
+height:130px;
+border-radius:50%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-size:24px;
+font-weight:bold;
+color:white;
+
+}
+
+.circle p{
+
+font-size:14px;
+margin-top:5px;
+
+}
+
+.hotel-circle{
+background:#0d6efd;
+}
+
+.food-circle{
+background:#ffc107;
+color:black;
+}
+
+.transport-circle{
+background:#20c997;
+}
+
+.activity-circle{
+background:#dc3545;
+}
+
+
+/* Buttons */
+
+.buttons{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:40px;
+flex-wrap:wrap;
+gap:20px;
+
+}
+
+.btn{
+
+padding:15px 30px;
+border:none;
+border-radius:10px;
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+color:white;
+
+}
+
+.back{
+background:#6c757d;
+}
+
+.save{
+background:#dc3545;
+}
+
+.next{
+background:#198754;
+}
+
+.btn:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+/* Footer */
+
+footer{
+
+margin-top:50px;
+padding:25px;
+text-align:center;
+color:#666;
+font-size:18px;
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div>
+
+<h1>💰 Budget Planner</h1>
+
+<p>{{ place }} • {{ days }} Days</p>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="summary">
+
+<div class="card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Total Budget</h3>
+
+<p>₹{{ budget }}</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+<h3>Trip Duration</h3>
+
+<p>{{ days }} Days</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h3>Destination</h3>
+
+<p>{{ place }}</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-piggy-bank"></i>
+
+<h3>Daily Budget</h3>
+
+<p>₹{{ budget // days }}</p>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>📊 Budget Distribution</h2>
+
+<div class="item">
+
+<div class="label">
+
+<span>🏨 Hotels</span>
+
+<span>₹{{ hotel_budget }}</span>
+
+</div>
+
+<div class="progress">
+
+<div class="fill hotel"></div>
+
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">
+
+<span>🍽 Food</span>
+
+<span>₹{{ food_budget }}</span>
+
+</div>
+
+<div class="progress">
+
+<div class="fill food"></div>
+
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">
+
+<span>🚕 Transport</span>
+
+<span>₹{{ transport_budget }}</span>
+
+</div>
+
+<div class="progress">
+
+<div class="fill transport"></div>
+
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">
+
+<span>🎟 Activities</span>
+
+<span>₹{{ activity_budget }}</span>
+
+</div>
+
+<div class="progress">
+
+<div class="fill activity"></div>
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>💸 Money Left</h3>
+
+<p>₹{{ budget }}</p>
+
+</div>
+
+<div class="stat">
+
+<h3>📅 Per Day</h3>
+
+<p>₹{{ budget // days }}</p>
+
+</div>
+
+<div class="stat">
+
+<h3>💰 Savings Goal</h3>
+
+<p>20%</p>
+
+</div>
+
+</div>
+
+</div>
+<!-- Budget Tips -->
+
+<div class="section">
+
+<h2>💡 Smart Budget Tips</h2>
+
+<div class="tips">
+
+<div class="tip">
+<i class="fas fa-hotel"></i>
+<div>
+<h3>Book Hotels Early</h3>
+<p>Booking 2–3 weeks in advance can save up to 30%.</p>
+</div>
+</div>
+
+<div class="tip">
+<i class="fas fa-utensils"></i>
+<div>
+<h3>Eat Local Food</h3>
+<p>Local restaurants are cheaper and offer authentic cuisine.</p>
+</div>
+</div>
+
+<div class="tip">
+<i class="fas fa-bus"></i>
+<div>
+<h3>Use Public Transport</h3>
+<p>Metro, buses and shared taxis help reduce travel expenses.</p>
+</div>
+</div>
+
+<div class="tip">
+<i class="fas fa-ticket"></i>
+<div>
+<h3>Book Tickets Online</h3>
+<p>Many attractions provide online discounts.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Expense Chart -->
+
+<div class="section">
+
+<h2>📈 Expense Overview</h2>
+
+<div class="chart">
+
+<div class="circle hotel-circle">
+40%
+<p>Hotels</p>
+</div>
+
+<div class="circle food-circle">
+30%
+<p>Food</p>
+</div>
+
+<div class="circle transport-circle">
+20%
+<p>Transport</p>
+</div>
+
+<div class="circle activity-circle">
+10%
+<p>Activities</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Buttons -->
+
+<div class="buttons">
+
+<a href="/itinerary?place={{ place }}&days={{ days }}&budget={{ budget }}" class="btn back">
+⬅ AI Itinerary
+</a>
+
+<form action="/save_trip" method="POST">
+
+<input type="hidden" name="place" value="{{ place }}">
+<input type="hidden" name="days" value="{{ days }}">
+<input type="hidden" name="budget" value="{{ budget }}">
+
+<button type="submit" class="btn save">
+❤️ Save Trip
+</button>
+
+</form>
+
+<a href="/history" class="btn next">
+📜 View History ➜
+</a>
+
+</div>
+
+
+<footer>
+
+🌍 Smart Travel Planner <br>
+
+Plan • Explore • Travel
+
+</footer>
+
+</div>
+
+</body>
+
+</html>

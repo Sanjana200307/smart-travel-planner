@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Restaurants | Smart Travel Planner</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+}
+
+/* Hero */
+
+.hero{
+
+height:420px;
+
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:white;
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:58px;
+
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+}
+
+/* Container */
+
+.container{
+
+width:90%;
+max-width:1300px;
+margin:40px auto;
+
+}
+
+/* Search */
+
+.search{
+
+text-align:center;
+margin-bottom:40px;
+
+}
+
+.search input{
+
+width:60%;
+max-width:500px;
+
+padding:15px;
+
+font-size:18px;
+
+border-radius:30px;
+
+border:2px solid #28a745;
+
+outline:none;
+
+}
+
+/* Summary */
+
+.summary{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+margin-bottom:40px;
+
+}
+
+.summary-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.summary-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.summary-card i{
+
+font-size:42px;
+
+color:#28a745;
+
+margin-bottom:15px;
+
+}
+
+.summary-card h2{
+
+margin-bottom:10px;
+
+}
+
+.summary-card p{
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+/* Restaurant Grid */
+
+.restaurant-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+gap:30px;
+
+}
+
+.restaurant{
+
+background:white;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+.restaurant:hover{
+
+transform:translateY(-10px);
+
+}
+
+.restaurant img{
+
+width:100%;
+height:230px;
+object-fit:cover;
+
+}
+
+.restaurant-content{
+
+padding:25px;
+
+}
+
+.restaurant-content h2{
+
+color:#28a745;
+margin-bottom:15px;
+
+}
+
+.restaurant-content p{
+
+margin:10px 0;
+
+line-height:1.7;
+
+}
+
+.rating{
+
+color:#ffc107;
+font-size:18px;
+
+margin:10px 0;
+
+}
+
+.price{
+
+font-size:22px;
+font-weight:bold;
+color:#198754;
+
+margin:15px 0;
+
+}
+
+.buttons{
+
+display:flex;
+gap:10px;
+
+margin-top:20px;
+
+}
+
+.btn{
+
+flex:1;
+
+padding:12px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+text-align:center;
+
+color:white;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.map{
+
+background:#0d6efd;
+
+}
+
+.menu{
+
+background:#198754;
+
+}
+
+.btn:hover{
+
+opacity:.9;
+
+transform:scale(1.03);
+
+}
+
+.section-title{
+
+font-size:35px;
+
+margin-bottom:30px;
+
+color:#28a745;
+
+}
+/* Footer */
+
+footer{
+
+margin-top:80px;
+
+background:#1f2937;
+
+color:white;
+
+padding:50px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.footer-grid h2,
+.footer-grid h3{
+
+color:#00d4ff;
+
+margin-bottom:20px;
+
+}
+
+.footer-grid p{
+
+margin:10px 0;
+
+line-height:1.8;
+
+}
+
+footer hr{
+
+margin:30px 0;
+
+border:.5px solid #555;
+
+}
+
+.copyright{
+
+text-align:center;
+
+font-size:15px;
+
+}
+/* Footer */
+
+footer{
+
+margin-top:80px;
+
+background:#1f2937;
+
+color:white;
+
+padding:50px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.footer-grid h2,
+.footer-grid h3{
+
+color:#00d4ff;
+
+margin-bottom:20px;
+
+}
+
+.footer-grid p{
+
+margin:10px 0;
+
+line-height:1.8;
+
+}
+
+footer hr{
+
+margin:30px 0;
+
+border:.5px solid #555;
+
+}
+
+.copyright{
+
+text-align:center;
+
+font-size:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div>
+
+<h1>🍽 Restaurants in {{ place }}</h1>
+
+<p>Discover the best food around you</p>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="search">
+
+<input
+type="text"
+id="searchRestaurant"
+placeholder="🔍 Search Restaurant..."
+onkeyup="searchRestaurant()">
+
+</div>
+
+<div class="summary">
+
+<div class="summary-card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h2>Destination</h2>
+
+<p>{{ place }}</p>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fa-solid fa-utensils"></i>
+
+<h2>Total Restaurants</h2>
+
+<p>{{ restaurants|length }}</p>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fa-solid fa-star"></i>
+
+<h2>Top Rated</h2>
+
+<p>4.5+</p>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fa-solid fa-bowl-food"></i>
+
+<h2>Best Cuisine</h2>
+
+<p>Local & Multi Cuisine</p>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+🍴 Available Restaurants
+
+</h2>
+
+<div class="restaurant-grid">
+    {% for restaurant in restaurants %}
+
+<div class="restaurant">
+
+    <img src="https://picsum.photos/600/400?random={{ loop.index }}"
+         alt="Restaurant">
+
+    <div class="restaurant-content">
+
+        <h2>🍽 {{ restaurant.name }}</h2>
+
+        <p>
+            <i class="fa-solid fa-location-dot"></i>
+            {{ restaurant.address }}
+        </p>
+
+        <div class="rating">
+            ⭐⭐⭐⭐☆
+            <span style="color:#444;font-size:15px;">
+                (4.5)
+            </span>
+        </div>
+
+        <div class="price">
+            ₹₹ Moderate Price
+        </div>
+
+        <p>
+            <i class="fa-solid fa-utensils"></i>
+            Multi Cuisine
+        </p>
+
+        <p>
+            <i class="fa-solid fa-clock"></i>
+            Open: 10:00 AM - 10:30 PM
+        </p>
+
+        <p>
+            <i class="fa-solid fa-motorcycle"></i>
+            Home Delivery Available
+        </p>
+
+        <p>
+            <i class="fa-solid fa-wifi"></i>
+            Free WiFi
+        </p>
+
+        <p>
+            <i class="fa-solid fa-car"></i>
+            Parking Available
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn map"
+               href="https://www.google.com/maps?q={{ restaurant.lat }},{{ restaurant.lon }}"
+               target="_blank">
+
+                📍 View Map
+
+            </a>
+
+            <a class="btn menu"
+               href="https://www.google.com/search?q={{ restaurant.name }}+{{ place }}+menu"
+               target="_blank">
+
+                🍴 View Menu
+
+            </a>
+
+        </div>
+
+        <div class="buttons" style="margin-top:10px;">
+
+            <a class="btn"
+               style="background:#dc3545;"
+               href="https://www.google.com/search?q={{ restaurant.name }}+reviews"
+               target="_blank">
+
+                ⭐ Reviews
+
+            </a>
+
+            <a class="btn"
+               style="background:#ff9800;"
+               href="https://www.google.com/search?q={{ restaurant.name }}+{{ place }}"
+               target="_blank">
+
+                📷 Photos
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Next Button -->
+
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;margin-top:50px;gap:15px;">
+
+    <a href="/hotels?place={{ place }}&days={{ days }}&budget={{ budget }}"
+       class="btn map"
+       style="padding:18px 35px;">
+
+        ⬅ Back to Hotels
+
+    </a>
+
+    <a href="/itinerary?place={{ place }}&days={{ days }}&budget={{ budget }}"
+       class="btn menu"
+       style="padding:18px 35px;">
+
+        🗓 Continue to AI Itinerary →
+
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h2>🍽 Smart Travel Planner</h2>
+
+<p>
+
+Find the best restaurants, local food,
+maps and reviews for your journey.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p>🏠 Home</p>
+
+<p>🏨 Hotels</p>
+
+<p>🌦 Weather</p>
+
+<p>🗓 Itinerary</p>
+
+</div>
+
+<div>
+
+<h3>Food Types</h3>
+
+<p>🍛 Indian</p>
+
+<p>🍕 Italian</p>
+
+<p>🍜 Chinese</p>
+
+<p>🥗 Vegetarian</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+
+© 2026 Smart Travel Planner | All Rights Reserved
+
+</p>
+
+</footer>
+
+<script>
+
+function searchRestaurant(){
+
+let input=document.getElementById("searchRestaurant").value.toLowerCase();
+
+let cards=document.getElementsByClassName("restaurant");
+
+for(let i=0;i<cards.length;i++){
+
+let title=cards[i].getElementsByTagName("h2")[0];
+
+if(title.innerHTML.toLowerCase().includes(input)){
+
+cards[i].style.display="block";
+
+}
+else{
+
+cards[i].style.display="none";
+
+}
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

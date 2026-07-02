@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>📜 Trip History</h1>
+
+        {% if trips %}
+
+        <table border="1" width="100%" cellpadding="10">
+            <tr>
+                <th>Destination</th>
+                <th>Days</th>
+                <th>Budget</th>
+            </tr>
+
+            {% for trip in trips %}
+            <tr>
+                <td>{{ trip[0] }}</td>
+                <td>{{ trip[1] }}</td>
+                <td>₹{{ trip[2] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No trip history found.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/">⬅ Back to Home</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

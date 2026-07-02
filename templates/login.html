@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Travel Planner Login</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+    no-repeat center center/cover;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:900px;
+    height:550px;
+    display:flex;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.left{
+    flex:1;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    background:rgba(0,0,0,0.25);
+}
+
+.left h1{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.left p{
+    text-align:center;
+    font-size:18px;
+}
+
+.right{
+    flex:1;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-box{
+    width:350px;
+    color:white;
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:32px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+.login-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#00b894;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#009970;
+}
+
+.register{
+    text-align:center;
+    margin-top:20px;
+}
+
+.register a{
+    color:#fff;
+    font-weight:bold;
+}
+
+.icon{
+    text-align:center;
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <div class="left">
+        <h1>🌍 Smart Travel Planner</h1>
+        <p>
+            Discover destinations, weather,
+            hotels, attractions and AI-powered
+            travel itineraries.
+        </p>
+    </div>
+
+    <div class="right">
+
+        <div class="login-box">
+
+            <div class="icon">
+                <i class="fa-solid fa-plane-departure"></i>
+            </div>
+
+            <h2>Login</h2>
+
+            <form action="/login" method="POST">
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email"
+                           name="email"
+                           placeholder="Enter Email"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password"
+                           name="password"
+                           placeholder="Enter Password"
+                           required>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+
+            </form>
+
+            <div class="register">
+                Don't have an account?
+                <a href="/register">Register</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

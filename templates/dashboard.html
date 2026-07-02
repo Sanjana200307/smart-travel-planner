@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Travel Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f4f7fb;
+}
+
+header{
+background:linear-gradient(135deg,#0d6efd,#00b894);
+color:white;
+padding:30px;
+text-align:center;
+}
+
+header h1{
+font-size:40px;
+}
+
+header p{
+margin-top:10px;
+font-size:18px;
+}
+
+.summary{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin:30px;
+}
+
+.summary .box{
+background:white;
+padding:20px;
+width:220px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.summary h2{
+color:#0d6efd;
+margin-bottom:10px;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+padding:30px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:45px;
+color:#0d6efd;
+margin-bottom:20px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#666;
+margin-bottom:20px;
+}
+
+.card a{
+display:inline-block;
+padding:12px 25px;
+background:#0d6efd;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
+
+.card a:hover{
+background:#084298;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🌍 Smart Travel Planner</h1>
+
+<p>Welcome to your travel dashboard</p>
+
+</header>
+
+<div class="summary">
+
+<div class="box">
+<h2>📍 Destination</h2>
+<p>{{ place }}</p>
+</div>
+
+<div class="box">
+<h2>📅 Days</h2>
+<p>{{ days }}</p>
+</div>
+
+<div class="box">
+<h2>💰 Budget</h2>
+<p>₹{{ budget }}</p>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+<i class="fa-solid fa-landmark"></i>
+<h3>Top Attractions</h3>
+<p>Explore famous tourist places.</p>
+<a href="/attractions?place={{ place }}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-hotel"></i>
+<h3>Hotels</h3>
+<p>Find recommended hotels.</p>
+<a href="/hotels?place={{ place }}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-utensils"></i>
+<h3>Restaurants</h3>
+<p>Taste local cuisine.</p>
+<a href="/restaurants?place={{ place }}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-calendar-days"></i>
+<h3>AI Itinerary</h3>
+<p>View your complete travel plan.</p>
+<a href="/itinerary?place={{ place }}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-cloud-sun"></i>
+<h3>Weather</h3>
+<p>Current weather forecast.</p>
+<a href="/weather?place={{ place }}">Open</a>
+</div>
+
+
+<div class="card">
+<i class="fa-solid fa-wallet"></i>
+<h3>Budget Planner</h3>
+<p>Budget breakdown.</p>
+<a href="/budget?place={{ place }}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-clock-rotate-left"></i>
+<h3>History</h3>
+<p>Previous searches.</p>
+<a href="/history">Open</a>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>Smart Travel Planner</h3>
+
+<p>Plan • Explore • Enjoy</p>
+
+</footer>
+
+</body>
+
+</html>

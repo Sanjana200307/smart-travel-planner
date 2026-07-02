@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hotels</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#eef3f8;
+}
+
+/* Hero */
+
+.hero{
+
+height:420px;
+
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1566073771259-6a8506099945");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+color:white;
+
+}
+
+.hero h1{
+
+font-size:60px;
+
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+}
+
+/* Container */
+
+.container{
+
+width:90%;
+max-width:1300px;
+margin:40px auto;
+
+}
+
+/* Summary */
+
+.summary{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+gap:25px;
+
+margin-bottom:40px;
+
+}
+
+.summary-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.summary-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.summary-card i{
+
+font-size:42px;
+
+color:#0d6efd;
+
+margin-bottom:15px;
+
+}
+
+.summary-card h2{
+
+font-size:18px;
+
+margin-bottom:10px;
+
+}
+
+.summary-card p{
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+/* Hotel Cards */
+
+.hotel-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+gap:30px;
+
+}
+
+.hotel{
+
+background:white;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+.hotel:hover{
+
+transform:translateY(-10px);
+
+}
+
+.hotel img{
+
+width:100%;
+
+height:240px;
+
+object-fit:cover;
+
+}
+
+.hotel-content{
+
+padding:25px;
+
+}
+
+.hotel-content h2{
+
+color:#0d6efd;
+
+margin-bottom:15px;
+
+}
+
+.hotel-content p{
+
+margin:10px 0;
+
+font-size:15px;
+
+line-height:1.7;
+
+}
+
+.rating{
+
+color:#ffc107;
+
+font-size:18px;
+
+margin:10px 0;
+
+}
+
+.price{
+
+font-size:25px;
+
+font-weight:bold;
+
+color:#198754;
+
+margin:15px 0;
+
+}
+.buttons{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:20px;
+
+gap:10px;
+
+}
+
+.btn{
+
+flex:1;
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+text-align:center;
+
+text-decoration:none;
+
+color:white;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.map{
+
+background:#0d6efd;
+
+}
+
+.book{
+
+background:#198754;
+
+}
+
+.btn:hover{
+
+opacity:.9;
+
+transform:scale(1.03);
+
+}
+
+.section-title{
+
+font-size:35px;
+
+margin-bottom:30px;
+
+color:#0d6efd;
+
+}
+/* Search */
+
+.search-box{
+
+margin:50px 0;
+
+text-align:center;
+
+}
+
+.search-box input{
+
+width:60%;
+
+max-width:500px;
+
+padding:15px;
+
+font-size:18px;
+
+border-radius:30px;
+
+border:2px solid #0d6efd;
+
+outline:none;
+
+}
+
+/* Footer */
+
+footer{
+
+margin-top:70px;
+
+background:#1b263b;
+
+color:white;
+
+padding:50px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.footer-grid h2,
+.footer-grid h3{
+
+margin-bottom:20px;
+
+color:#00d4ff;
+
+}
+
+.footer-grid p{
+
+margin:10px 0;
+
+line-height:1.8;
+
+}
+
+hr{
+
+margin:30px 0;
+
+border:.5px solid #555;
+
+}
+
+.copyright{
+
+text-align:center;
+
+font-size:15px;
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div>
+
+<h1>🏨 Hotels in {{ place }}</h1>
+
+<p>Find the best stay for your trip</p>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="summary">
+
+<div class="summary-card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h2>Destination</h2>
+
+<p>{{ place }}</p>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fa-solid fa-hotel"></i>
+
+<h2>Total Hotels</h2>
+
+<p>{{ hotels|length }}</p>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fa-solid fa-star"></i>
+
+<h2>Top Rated</h2>
+
+<p>4.5+</p>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h2>Budget Range</h2>
+
+<p>₹1500+</p>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+🏨 Available Hotels
+
+</h2>
+
+<div class="hotel-grid">
+    {% for hotel in hotels %}
+
+<div class="hotel">
+
+    <img src="https://picsum.photos/600/400?random={{ loop.index }}" alt="Hotel">
+
+    <div class="hotel-content">
+
+        <h2>🏨 {{ hotel.name }}</h2>
+
+        <p>
+            <i class="fa-solid fa-location-dot"></i>
+            {{ hotel.address }}
+        </p>
+
+        <div class="rating">
+
+            ⭐⭐⭐⭐☆
+
+        </div>
+
+        <div class="price">
+
+            ₹{{ 1500 + loop.index*500 }} / Night
+
+        </div>
+
+        <p>
+
+            <i class="fa-solid fa-circle-check"></i>
+            Free WiFi
+
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-square-parking"></i>
+            Free Parking
+
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-utensils"></i>
+            Restaurant
+
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-dumbbell"></i>
+            Fitness Center
+
+        </p>
+
+        <p>
+
+            <i class="fa-solid fa-water-ladder"></i>
+            Swimming Pool
+
+        </p>
+
+        <div class="buttons">
+
+            <a
+            class="btn map"
+            target="_blank"
+            href="https://www.google.com/maps?q={{ hotel.lat }},{{ hotel.lon }}">
+
+                📍 View Map
+
+            </a>
+
+            <a
+            class="btn book"
+            target="_blank"
+            href="https://www.booking.com/searchresults.html?ss={{ place }}">
+
+                🏨 Book
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px;margin-top:50px;">
+
+    <a href="/attractions?place={{ place }}&days={{ days }}&budget={{ budget }}"
+       class="btn map"
+       style="padding:18px 35px;">
+
+        ⬅ Back to Attractions
+
+    </a>
+
+    <a href="/restaurants?place={{ place }}&days={{ days }}&budget={{ budget }}"
+       class="btn book"
+       style="padding:18px 35px;">
+
+        🍽 Continue to Restaurants →
+
+    </a>
+
+</div>
+
+
+</div>
+<!-- Search Section -->
+
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h2>🏨 Smart Travel Planner</h2>
+
+<p>
+Find the best hotels for your trip with maps,
+ratings and booking links.
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p>🏠 Home</p>
+
+<p>🗺 Attractions</p>
+
+<p>🍽 Restaurants</p>
+
+<p>📅 Itinerary</p>
+
+</div>
+
+<div>
+
+<h3>Facilities</h3>
+
+<p>✔ Free WiFi</p>
+
+<p>✔ Parking</p>
+
+<p>✔ Swimming Pool</p>
+
+<p>✔ Restaurant</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+
+© 2026 Smart Travel Planner | All Rights Reserved
+
+</p>
+
+</footer>
+
+<script>
+
+
+
+</script>
+
+</body>
+
+</html>

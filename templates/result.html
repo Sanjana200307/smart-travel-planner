@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Plan Result</title>
+
+```
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+```
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="card">
+
+```
+<h1>🌍 {{ place }}</h1>
+
+{% if info.image %}
+<img src="{{ info.image }}"
+     alt="{{ place }}"
+     class="place-image">
+{% endif %}
+
+<p>{{ info.description }}</p>
+
+<hr>
+
+<h2>📋 Trip Details</h2>
+
+<p><strong>Destination:</strong> {{ place }}</p>
+<p><strong>Days:</strong> {{ days }}</p>
+<p><strong>Budget:</strong> ₹{{ budget }}</p>
+
+<hr>
+
+<h2>🌤 Weather</h2>
+
+{% if weather %}
+    <p><strong>Temperature:</strong> {{ weather.temp }} °C</p>
+    <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+    <p><strong>Condition:</strong> {{ weather.condition }}</p>
+{% else %}
+    <p>Weather information unavailable.</p>
+{% endif %}
+
+<hr>
+
+<h2>💰 Budget Breakdown</h2>
+
+<p>🏨 Hotel Budget: ₹{{ hotel_budget }}</p>
+<p>🍽 Food Budget: ₹{{ food_budget }}</p>
+<p>🚕 Transport Budget: ₹{{ transport_budget }}</p>
+<p>🎟 Activity Budget: ₹{{ activity_budget }}</p>
+
+<hr>
+
+<h2>🏨 Recommended Hotels</h2>
+
+<ul>
+    {% for hotel in hotels %}
+    <li>{{ hotel }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>📍 Attractions</h2>
+
+<ul>
+    {% for attraction in attractions %}
+    <li>{{ attraction }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>🍜 Local Food</h2>
+
+<ul>
+    {% for food in foods %}
+    <li>{{ food }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>📌 Nearby Places</h2>
+
+<ul>
+    {% for place_name in nearby_places %}
+    <li>{{ place_name }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>🗓 AI Travel Itinerary</h2>
+
+<pre>{{ itinerary }}</pre>
+
+<hr>
+
+<h2>💡 Travel Tips</h2>
+
+<ul>
+    {% for tip in tips %}
+    <li>{{ tip }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>🎒 Packing Checklist</h2>
+
+<ul>
+    {% for item in packing_list %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<form action="/save_trip" method="POST">
+
+    <input type="hidden" name="place" value="{{ place }}">
+    <input type="hidden" name="days" value="{{ days }}">
+    <input type="hidden" name="budget" value="{{ budget }}">
+
+    <button type="submit">
+        ❤️ Save Trip
+    </button>
+
+</form>
+
+<hr>
+
+<h2>⭐ Reviews</h2>
+
+<form action="/add_review" method="POST">
+
+    <input type="hidden" name="place" value="{{ place }}">
+
+    <input type="text"
+           name="username"
+           placeholder="Your Name"
+           required>
+
+    <select name="rating">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+    </select>
+
+    <textarea name="review"
+              placeholder="Write your review"
+              required></textarea>
+
+    <button type="submit">
+        Submit Review
+    </button>
+
+</form>
+
+{% if reviews %}
+<h3>⭐ Visitor Reviews</h3>
+
+{% for review in reviews %}
+<div class="review-box">
+
+    <strong>{{ review[0] }}</strong>
+
+    <p>Rating: {{ review[1] }}/5</p>
+
+    <p>{{ review[2] }}</p>
+
+</div>
+{% endfor %}
+{% endif %}
+
+<hr>
+
+<h2>🗺 Location Map</h2>
+
+<div id="map"></div>
+
+<script>
+
+    var map = L.map('map').setView(
+        [{{ coordinates.lat }}, {{ coordinates.lon }}],
+        12
+    );
+
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution: '&copy; OpenStreetMap contributors'
+        }
+    ).addTo(map);
+
+    L.marker(
+        [{{ coordinates.lat }}, {{ coordinates.lon }}]
+    ).addTo(map)
+    .bindPopup('{{ place }}')
+    .openPopup();
+
+</script>
+
+<br>
+
+<a href="/">⬅ Plan Another Trip</a>
+
+<br><br>
+
+<a href="/history">📜 View Search History</a>
+```
+
+</div>
+
+</div>
+
+</body>
+</html>

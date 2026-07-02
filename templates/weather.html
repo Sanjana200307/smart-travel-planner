@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Weather Information</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f4f7fb;
+}
+
+header{
+background:linear-gradient(135deg,#2193b0,#6dd5ed);
+color:white;
+padding:35px;
+text-align:center;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:30px auto;
+}
+
+.summary{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+text-align:center;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card i{
+font-size:35px;
+color:#2193b0;
+margin-bottom:10px;
+}
+
+.card h2{
+margin-bottom:10px;
+color:#333;
+}
+
+.card p{
+font-size:18px;
+font-weight:bold;
+}
+
+.map{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+margin-bottom:30px;
+}
+
+iframe{
+width:100%;
+height:450px;
+border:none;
+border-radius:10px;
+}
+
+.tips{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+margin-bottom:30px;
+}
+
+.tips h2{
+margin-bottom:15px;
+color:#2193b0;
+}
+
+.tips ul{
+padding-left:20px;
+line-height:2;
+}
+
+.navigation{
+display:flex;
+justify-content:space-between;
+margin:30px 0;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.navigation a{
+text-decoration:none;
+background:#2193b0;
+color:white;
+padding:14px 28px;
+border-radius:8px;
+font-weight:bold;
+transition:.3s;
+}
+
+.navigation a:hover{
+background:#176d84;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🌤 Weather Information</h1>
+
+<p>{{ place }}</p>
+
+</header>
+
+<div class="container">
+
+<div class="summary">
+
+<div class="card">
+<i class="fas fa-temperature-high"></i>
+<h2>Temperature</h2>
+<p>{{ temp }} °C</p>
+</div>
+
+<div class="card">
+<i class="fas fa-cloud"></i>
+<h2>Condition</h2>
+<p>{{ condition }}</p>
+</div>
+
+<div class="card">
+<i class="fas fa-tint"></i>
+<h2>Humidity</h2>
+<p>{{ humidity }}%</p>
+</div>
+
+</div>
+
+<div class="map">
+
+<h2 style="margin-bottom:15px;">📍 Destination Map</h2>
+
+<iframe
+src="https://www.openstreetmap.org/export/embed.html?marker={{ lat }},{{ lon }}">
+</iframe>
+
+</div>
+
+<div class="tips">
+
+<h2>💡 Travel Tips</h2>
+
+<ul>
+
+{% if temp > 35 %}
+<li>🥤 Stay hydrated and carry water.</li>
+<li>🧴 Use sunscreen.</li>
+{% elif temp > 25 %}
+<li>😎 Pleasant weather for sightseeing.</li>
+<li>👟 Wear comfortable shoes.</li>
+{% else %}
+<li>🧥 Carry a light jacket.</li>
+<li>☕ Perfect weather for outdoor activities.</li>
+{% endif %}
+
+<li>📷 Keep your camera ready.</li>
+<li>🎟 Book attraction tickets in advance.</li>
+<li>🚖 Use local transport for easy travel.</li>
+
+</ul>
+
+</div>
+
+<div class="navigation">
+
+<a href="/itinerary?place={{ place }}&days={{ days }}&budget={{ budget }}">
+⬅ Back to AI Itinerary
+</a>
+
+<a href="/budget?place={{ place }}&days={{ days }}&budget={{ budget }}">
+Go to Budget Planner ➜
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

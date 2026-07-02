@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ place }} - Smart Travel Planner</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+.hero{
+    height:400px;
+    background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover;
+    position:relative;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    text-align:center;
+}
+
+.hero-content h1{
+    font-size:55px;
+}
+
+.hero-content p{
+    font-size:22px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.list li{
+    margin:10px 0;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    background:#00b894;
+    color:white;
+    text-decoration:none;
+    padding:15px 35px;
+    border-radius:8px;
+    font-size:18px;
+}
+
+.btn:hover{
+    background:#019874;
+}
+
+.weather{
+    font-size:20px;
+    line-height:2;
+}
+
+.info-table{
+    width:100%;
+}
+
+.info-table td{
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+.food-list{
+    list-style:none;
+    padding:0;
+    margin-top:15px;
+}
+
+.food-list li{
+    background:#fff;
+    margin:10px 0;
+    padding:15px 20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    font-size:18px;
+    font-weight:500;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="hero">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+<h1>{{ place }}</h1>
+<p>Discover your next adventure</p>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>📖 About {{ place }}</h2>
+
+<br>
+
+<p>{{ info.description }}</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<h2>🌤 Weather</h2>
+
+{% if weather %}
+
+<div class="weather">
+
+🌡 Temperature : {{ weather.temp }} °C
+
+<br>
+
+💧 Humidity : {{ weather.humidity }} %
+
+<br>
+
+☁ Condition : {{ weather.condition }}
+
+</div>
+
+{% else %}
+
+<p>Weather unavailable.</p>
+
+{% endif %}
+
+</div>
+
+<div class="card">
+
+<h2>📍 Destination Details</h2>
+
+<table class="info-table">
+
+<tr>
+<td><b>Destination</b></td>
+<td>{{ place }}</td>
+</tr>
+
+<tr>
+<td><b>Days</b></td>
+<td>{{ days }}</td>
+</tr>
+
+<tr>
+<td><b>Budget</b></td>
+<td>₹{{ budget }}</td>
+</tr>
+
+<tr>
+<td><b>Best Time</b></td>
+<td>October - March</td>
+</tr>
+
+<tr>
+<td><b>Currency</b></td>
+<td>Indian Rupee</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<h2>📍 Top Attractions</h2>
+
+<ul class="list">
+
+{% for a in attractions %}
+
+<li>📸 {{ a }}</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>🍛 Famous Foods</h2>
+
+<ul class="food-list">
+    {% for food in foods %}
+    <li>🍽 {{ food.name }}</li>
+{% endfor %}
+</ul>
+
+</div>
+</div>
+
+<div class="card">
+
+<h2>💡 Why Visit {{ place }}?</h2>
+
+<p>
+
+Explore historical monuments, enjoy local cuisine,
+experience vibrant culture, and create unforgettable
+memories.
+
+</p>
+
+<center>
+
+<form action="/dashboard" method="POST">
+    
+
+<input type="hidden" name="place" value="{{ place }}">
+<input type="hidden" name="days" value="{{ days }}">
+<input type="hidden" name="budget" value="{{ budget }}">
+
+<button class="btn">
+Continue Planning →
+</button>
+
+</form>
+
+</center>
+
+</div>
+
+</div>
+
+</body>
+</html>

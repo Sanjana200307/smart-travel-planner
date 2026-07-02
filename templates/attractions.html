@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Top Attractions</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+}
+
+header{
+background:#0d6efd;
+color:white;
+padding:25px;
+text-align:center;
+}
+
+.container{
+width:90%;
+margin:30px auto;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.card{
+
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.content{
+padding:20px;
+}
+
+.content h2{
+color:#0d6efd;
+margin-bottom:10px;
+}
+
+.content p{
+margin:8px 0;
+}
+
+.rating{
+color:orange;
+font-weight:bold;
+}
+
+.btn{
+
+display:block;
+text-align:center;
+margin-top:15px;
+background:#0d6efd;
+color:white;
+padding:12px;
+border-radius:8px;
+text-decoration:none;
+
+}
+
+.btn:hover{
+background:#084298;
+}
+
+.back{
+
+display:inline-block;
+margin-top:30px;
+padding:15px 25px;
+background:#198754;
+color:white;
+text-decoration:none;
+border-radius:8px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🏛 Top Attractions in {{ place }}</h1>
+
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+{% for attraction in attractions %}
+
+<div class="card">
+
+<img src="https://picsum.photos/600/400?random={{ loop.index }}">
+
+<div class="content">
+
+<h2>{{ attraction }}</h2>
+
+<p class="rating">
+⭐⭐⭐⭐⭐ 4.8/5
+</p>
+
+<p>
+<i class="fa-solid fa-clock"></i>
+9:00 AM - 6:00 PM
+</p>
+
+<p>
+<i class="fa-solid fa-ticket"></i>
+Entry Fee: ₹100
+</p>
+
+<p>
+One of the must-visit attractions in {{ place }}.
+</p>
+
+<a href="https://www.google.com/search?q={{ attraction }}" target="_blank" class="btn">
+View Details
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:40px;">
+
+<a href="/dashboard" class="back">
+⬅ Dashboard
+</a>
+
+<a href="/hotels?place={{ place }}" class="back">
+Next ➜ Hotels
+</a>
+
+</div>
+
+<a href="/dashboard" class="back">
+⬅ Back to Dashboard
+</a>
+
+</div>
+
+</body>
+</html>

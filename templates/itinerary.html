@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Travel Itinerary</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6f9;
+}
+
+header{
+background:linear-gradient(135deg,#6a11cb,#2575fc);
+color:white;
+padding:30px;
+text-align:center;
+}
+
+.summary{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:20px;
+flex-wrap:wrap;
+}
+
+.box{
+background:white;
+padding:15px 25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+font-weight:bold;
+}
+
+.container{
+width:90%;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:20px 0;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.day{
+background:#2575fc;
+color:white;
+padding:10px;
+border-radius:8px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.ai-box{
+background:#f8f9fa;
+padding:15px;
+border-left:5px solid #6a11cb;
+white-space:pre-wrap;
+line-height:1.6;
+}
+
+.buttons{
+display:flex;
+justify-content:space-between;
+margin:30px 0;
+}
+
+a{
+text-decoration:none;
+background:#2575fc;
+color:white;
+padding:12px 20px;
+border-radius:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>🧳 Travel Itinerary</h1>
+<p>{{ place }}</p>
+</header>
+
+<!-- SUMMARY -->
+<div class="summary">
+
+<div class="box">📍 {{ place }}</div>
+<div class="box">📅 {{ days }} Days</div>
+<div class="box">💰 ₹{{ budget }}</div>
+
+</div>
+
+<div class="container">
+
+<!-- AI PLAN -->
+<div class="card">
+
+<h2>🤖 AI Generated Plan</h2>
+
+<div class="ai-box">
+{{ itinerary }}
+</div>
+
+</div>
+
+<!-- TIP SECTION -->
+<div class="card">
+
+<h2>💡 Travel Tips</h2>
+
+<ul>
+<li>✔ Carry water bottle</li>
+<li>✔ Book tickets early</li>
+<li>✔ Use local transport</li>
+<li>✔ Try local food</li>
+</ul>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="buttons">
+
+<a href="/restaurants?place={{ place }}">⬅ Restaurants</a>
+<a href="/weather?place={{ place }}&days={{ days }}&budget={{ budget }}">
+    🌤 Go to Weather
+</a>
+
+
+</div>
+
+</div>
+
+</body>
+</html>
