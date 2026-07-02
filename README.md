@@ -36,9 +36,8 @@ The application helps users plan trips by providing AI-generated itineraries, to
 
 ---
 
-## 📸 Screenshots
-
-
+## Project demo
+https://sanjanasanju.pythonanywhere.com/
 
 ---
 
